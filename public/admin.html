@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stayziya | Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .admin-container { max-width: 600px; margin: 100px auto; padding: 2rem; background: var(--bg-card); border-radius: var(--radius-card); border: 1px solid var(--glass-border); }
+        .hidden { display: none !important; }
+        input, select, textarea { width: 100%; padding: 0.8rem; margin: 0.5rem 0 1rem; border: 1px solid var(--glass-border); border-radius: var(--radius-sm); font-family: 'Inter'; }
+    </style>
+</head>
+<body>
+    <nav class="navbar zolo-nav">
+        <div class="logo-wrapper">
+            <div class="z-icon"></div>
+            <div class="logo poppins">
+                <span class="gold-text">Stay</span>ziya <i class="fas fa-heart" style="color: #e11d48; font-size: 0.8em; margin-left: 2px;"></i> <small style="font-size: 0.4em; color: var(--text-muted);">Admin</small>
+            </div>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/" class="nav-exit">Home</a></li>
+            <li><a href="/experience.html" class="nav-exit">Experience</a></li>
+            <li><a href="/#rooms" class="nav-exit">Properties</a></li>
+            <li><a href="/contact.html" class="nav-exit">Contact</a></li>
+            <li><button id="navLogoutBtn" class="btn-outline pill hidden" onclick="logout()" style="padding: 0.4rem 1rem; font-size: 0.9rem; cursor: pointer; color: var(--gold); border-color: var(--gold);">Logout</button></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <div class="admin-container glass-zolo" id="loginBox">
+        <h2 class="poppins">Admin Login</h2>
+        <input type="password" id="adminPassword" placeholder="Enter Admin Password">
+        <button class="btn-primary pill" onclick="login()" style="width: 100%;">Unlock Dashboard</button>
+        <p id="loginError" style="color: red; margin-top: 1rem;"></p>
+    </div>
+
+    <div class="admin-container glass-zolo hidden" id="dashboardBox">
+        <h2 class="poppins">Update Property</h2>
+        <label>Select Property</label>
+        <select id="propSelect" onchange="loadProperty()">
+            <option value="stayziya">Stayziya (Main)</option>
+            <option value="imperial-ladies">Stayziya Imperial PG for Ladies</option>
+            <option value="imperial-gents">Stayziya Imperial PG for Gents</option>
+        </select>
+
+        <h3 class="poppins" style="margin-top: 1.5rem;">Description Edit</h3>
+        <textarea id="propDesc" rows="4"></textarea>
+        <button class="btn-primary pill" onclick="saveDesc()" style="width:100%;">Save Description</button>
+
+        <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 2rem 0;">
+
+        <h3 class="poppins">Room Photos <span id="photoCount" style="font-size: 0.9rem; color: var(--gold);">(0/4)</span></h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Max 4 photos per room type. These will slide automatically on the home card.</p>
+        
+        <form id="uploadForm" style="margin-bottom: 2rem;">
+            <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                <select id="roomType" name="roomType" style="margin: 0;" onchange="updateUploadState()">
+                    <option value="2 Sharing">2 Sharing</option>
+                    <option value="3 Sharing">3 Sharing</option>
+                    <option value="4 Sharing">4 Sharing</option>
+                    <option value="Common Area">Common Area</option>
+                </select>
+                <input type="file" id="photoFile" accept="image/*" required style="margin: 0;">
+            </div>
+            <input type="text" id="photoDescInput" placeholder="Write a short description for this photo (Optional)" style="margin-bottom: 10px;">
+            <button type="submit" id="uploadBtn" class="btn-outline pill" style="width: 100%;">Upload Gallery Photo</button>
+        </form>
+        <p id="uploadStatus" class="gold-text" style="margin-top: 1rem;"></p>
+        
+        <h4 style="margin-top: 1.5rem;">Current Photos (Max 4 per room type)</h4>
+        <div id="photoList" style="display:flex; gap:15px; flex-wrap:wrap; margin-top: 10px;"></div>
+
+        <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 2rem 0;">
+
+        <h3 class="poppins">Owner Profile Settings</h3>
+        <div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 1.5rem;">
+            <div style="text-align: center;">
+                <img id="ownerPreview" src="/uploads/owner-placeholder.jpg" style="width: 120px; height: 120px; object-fit: cover; border-radius: 10px; border: 1px solid var(--glass-border);">
+                <input type="file" id="ownerFile" accept="image/*" style="display: none;" onchange="uploadOwnerPhoto()">
+                <button class="btn-outline pill" onclick="document.getElementById('ownerFile').click()" style="padding: 0.4rem 0.8rem; font-size: 0.8rem; margin-top: 5px;">Change Photo</button>
+            </div>
+            <div style="flex: 1;">
+                <label>Owner Name</label>
+                <input type="text" id="ownerName" placeholder="Name">
+                <label>Executive Bio</label>
+                <textarea id="ownerBio" rows="3"></textarea>
+                <label>Management Skills (Comma separated)</label>
+                <input type="text" id="ownerSkills" placeholder="e.g. Operations, Hospitality">
+                <button class="btn-primary pill" onclick="saveOwner()" style="width: 100%;">Update Details</button>
+            </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 2rem 0;">
+
+        <h3 class="poppins">Experience & Site Photos</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Directly replace the main photos on the Experience and Home pages.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 15px;" id="sitePhotoGrid">
+            <!-- Populated via loadSitePhotos() -->
+        </div>
+        <p id="siteUploadStatus" class="gold-text" style="margin-top: 1rem;"></p>
+
+        <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 2rem 0;">
+
+        <h3 class="poppins">Manage Blogs</h3>
+        <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem;">
+            <label>Blog Title</label>
+            <input type="text" id="blogTitle">
+            <label>Content</label>
+            <textarea id="blogContent" rows="5"></textarea>
+            <label>Thumbnail Image</label>
+            <input type="file" id="blogFile" accept="image/*" style="margin-bottom: 1rem;">
+            <button class="btn-outline pill" onclick="addBlog()" style="width: 100%;">Post to Blog</button>
+        </div>
+        <div id="adminBlogList"></div>
+    </div>
+
+    <script>
+        async function checkAuth() {
+            const res = await fetch('/api/check-auth');
+            if (res.ok) {
+                document.getElementById('loginBox').classList.add('hidden');
+                document.getElementById('dashboardBox').classList.remove('hidden');
+                document.getElementById('navLogoutBtn').classList.remove('hidden');
+                loadProperty();
+                loadSitePhotos();
+                loadBlogs();
+            }
+        }
+
+        // Auto-logout when clicking a nav link
+        document.querySelectorAll('.nav-exit').forEach(link => {
+            link.addEventListener('click', async (e) => {
+                e.preventDefault();
+                await fetch('/api/logout', { method: 'POST' });
+                window.location.href = link.getAttribute('href');
+            });
+        });
+
+        async function login() {
+            const pass = document.getElementById('adminPassword').value;
+            const res = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password: pass })
+            });
+            if (res.ok) {
+                checkAuth();
+            } else {
+                document.getElementById('loginError').innerText = 'Incorrect Password!';
+            }
+        }
+
+        async function logout() {
+            await fetch('/api/logout', { method: 'POST' });
+            location.reload();
+        }
+
+        let currentPropertyPhotos = [];
+
+        async function loadProperty() {
+            const id = document.getElementById('propSelect').value;
+            const res = await fetch(`/api/properties/${id}`);
+            const data = await res.json();
+            document.getElementById('propDesc').value = data.description || '';
+            currentPropertyPhotos = data.photos || [];
+            updateUploadState();
+        }
+
+        function updateUploadState() {
+            const rt = document.getElementById('roomType').value;
+            const rtPhotos = currentPropertyPhotos.filter(p => p.room_type === rt);
+            document.getElementById('photoCount').innerText = `(${rtPhotos.length}/4 for ${rt})`;
+            
+            const pl = document.getElementById('photoList');
+            pl.innerHTML = '';
+
+            for (let i = 0; i < 4; i++) {
+                if (i < rtPhotos.length) {
+                    const p = rtPhotos[i];
+                    const descText = p.description ? `<i>"${p.description}"</i>` : '';
+                    pl.innerHTML += `<div style="text-align:center; position:relative; width: 100px;">
+                        <img src="${p.image_url}" style="width:100px; height:100px; object-fit:cover; border-radius:8px; border:1px solid var(--glass-border);">
+                        <button onclick="deletePhoto(${p.id})" style="position:absolute; top:-5px; right:-5px; background:red; color:white; border:none; border-radius:50%; width:22px; height:22px; font-size:12px; cursor:pointer; font-weight:bold; box-shadow: 0 4px 6px rgba(0,0,0,0.3); z-index:10;" title="Delete this photo">✕</button>
+                        <br><small style="color:var(--text-muted); font-size:10px; display:block; max-width:100px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${descText}</small>
+                    </div>`;
+                } else {
+                    pl.innerHTML += `<div title="Click to upload" onclick="document.getElementById('photoFile').click()" style="width: 100px; height: 100px; border: 2px dashed rgba(251, 191, 36, 0.5); border-radius: 8px; display: flex; align-items:center; justify-content:center; color: var(--gold); background: rgba(255,255,255,0.02); cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='rgba(251, 191, 36, 0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.02)'">
+                        <div style="font-size: 0.8rem; font-weight: 500;">+ Empty Slot</div>
+                    </div>`;
+                }
+            }
+
+            const isFull = rtPhotos.length >= 4;
+            document.getElementById('uploadBtn').disabled = false;
+            document.getElementById('photoFile').disabled = false;
+            
+            if (isFull) {
+                document.getElementById('uploadBtn').innerText = 'Upload & Overwrite Oldest';
+                document.getElementById('uploadBtn').className = 'btn-primary pill';
+                document.getElementById('uploadBtn').style.backgroundColor = '#e11d48';
+                document.getElementById('uploadBtn').style.borderColor = '#e11d48';
+                document.getElementById('uploadBtn').style.color = 'white';
+            } else {
+                document.getElementById('uploadBtn').innerText = 'Upload Gallery Photo';
+                document.getElementById('uploadBtn').className = 'btn-outline pill';
+                document.getElementById('uploadBtn').style.backgroundColor = 'transparent';
+                document.getElementById('uploadBtn').style.borderColor = 'var(--gold)';
+                document.getElementById('uploadBtn').style.color = 'var(--gold)';
+            }
+        }
+
+        async function deletePhoto(id) {
+            // Confirmation dialog removed! Deletion runs immediately.
+            const res = await fetch(`/api/photos/${id}`, { method: 'DELETE' });
+            if(res.ok) loadProperty();
+        }
+
+        async function saveDesc() {
+            const id = document.getElementById('propSelect').value;
+            const desc = document.getElementById('propDesc').value;
+            await fetch(`/api/properties/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ description: desc })
+            });
+            alert('Description Live!');
+        }
+
+        document.getElementById('uploadForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('propSelect').value;
+            const rt = document.getElementById('roomType').value;
+            const file = document.getElementById('photoFile').files[0];
+            
+            const formData = new FormData();
+            formData.append('property_id', id);
+            formData.append('room_type', rt);
+            formData.append('photo', file);
+            formData.append('description', document.getElementById('photoDescInput').value);
+
+            document.getElementById('uploadStatus').innerText = 'Uploading...';
+            const res = await fetch('/api/upload', { method: 'POST', body: formData });
+            if (res.ok) {
+                document.getElementById('uploadStatus').innerText = 'Photo uploaded successfully!';
+                document.getElementById('photoFile').value = '';
+                document.getElementById('photoDescInput').value = '';
+                loadProperty();
+            } else {
+                const err = await res.json();
+                document.getElementById('uploadStatus').innerText = err.error || 'Upload failed.';
+                document.getElementById('uploadStatus').style.color = 'red';
+            }
+        };
+
+        async function loadSitePhotos() {
+            const keys = [
+                { key: 'experience-meals', label: 'Meals Image' },
+                { key: 'experience-gym', label: 'Gym Image' },
+                { key: 'experience-volleyball', label: 'Volleyball Image' },
+                { key: 'experience-theater', label: 'Theater Image' },
+                { key: 'experience-community', label: 'Community Image' },
+                { key: 'hero-bg', label: 'Hero Main Image' }
+            ];
+            
+            const res = await fetch('/api/site-images');
+            const images = res.ok ? await res.json() : {};
+            const grid = document.getElementById('sitePhotoGrid');
+            grid.innerHTML = '';
+            
+            keys.forEach(item => {
+                const imgUrl = images[item.key];
+                if (imgUrl) {
+                    grid.innerHTML += `
+                        <div class="site-photo-edit" style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 10px; text-align:center; position:relative;">
+                            <label style="font-size: 0.8rem; font-weight: 600; display:block; margin-bottom:5px;">${item.label}</label>
+                            <img src="${imgUrl}?t=${Date.now()}" style="width:100px; height:60px; object-fit:cover; border-radius:5px; border:1px solid var(--glass-border); margin-bottom:5px;">
+                            <button onclick="deleteSitePhoto('${item.key}')" style="position:absolute; top:5px; right:5px; background:red; color:white; border:none; border-radius:50%; width:22px; height:22px; font-size:12px; cursor:pointer; font-weight:bold; box-shadow: 0 4px 6px rgba(0,0,0,0.3);" title="Delete this photo">✕</button>
+                        </div>
+                    `;
+                } else {
+                    grid.innerHTML += `
+                        <div class="site-photo-edit" style="background: rgba(255,255,255,0.03); padding: 10px; border-radius: 10px; text-align:center;">
+                            <label style="font-size: 0.8rem; font-weight: 600; display:block; margin-bottom:5px;">${item.label}</label>
+                            <div title="Click to upload" onclick="document.getElementById('file-${item.key}').click()" style="width: 100px; height: 60px; margin: 0 auto; border: 2px dashed rgba(251, 191, 36, 0.5); border-radius: 5px; display: flex; align-items:center; justify-content:center; color: var(--gold); background: rgba(255,255,255,0.02); cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='rgba(251, 191, 36, 0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.02)'">
+                                <span style="font-size: 0.8rem; font-weight: 600;">+ Slot</span>
+                            </div>
+                            <input type="file" id="file-${item.key}" style="display:none;" onchange="uploadSiteImage('${item.key}', this)" accept="image/*">
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        async function deleteSitePhoto(key) {
+            const res = await fetch(`/api/site-image/${key}`, { method: 'DELETE' });
+            if (res.ok) {
+                document.getElementById('siteUploadStatus').innerText = 'Photo deleted. Slot is now empty.';
+                loadSitePhotos();
+            }
+        }
+
+        // Handle Global Site Overwrites
+        async function uploadSiteImage(key, input) {
+            const file = input.files[0];
+            if (!file) return;
+            
+            const formData = new FormData();
+            formData.append('image_key', key);
+            formData.append('photo', file);
+
+            document.getElementById('siteUploadStatus').innerText = `Uploading ${key}...`;
+            const res = await fetch('/api/upload-site-image', { method: 'POST', body: formData });
+            if (res.ok) {
+                document.getElementById('siteUploadStatus').innerText = 'Image successfully replaced! Refresh site to see.';
+                loadSitePhotos();
+                setTimeout(() => document.getElementById('siteUploadStatus').innerText='', 5000);
+            } else {
+                document.getElementById('siteUploadStatus').innerText = 'Upload failed.';
+                document.getElementById('siteUploadStatus').style.color = 'red';
+            }
+        }
+
+        // --- BLOG & OWNER DASHBOARD ---
+        async function loadOwner() {
+            const res = await fetch('/api/owner');
+            const data = await res.json();
+            document.getElementById('ownerName').value = data.name || '';
+            document.getElementById('ownerBio').value = data.bio || '';
+            document.getElementById('ownerSkills').value = data.management_skills || '';
+            if (data.image_url) document.getElementById('ownerPreview').src = data.image_url + '?' + Date.now();
+        }
+
+        async function uploadOwnerPhoto() {
+            const file = document.getElementById('ownerFile').files[0];
+            if (!file) return;
+            const formData = new FormData();
+            formData.append('photo', file);
+            const res = await fetch('/api/owner/photo', { method: 'POST', body: formData });
+            if (res.ok) {
+                const data = await res.json();
+                document.getElementById('ownerPreview').src = data.image_url + '?' + Date.now();
+            }
+        }
+
+        async function saveOwner() {
+            const name = document.getElementById('ownerName').value;
+            const bio = document.getElementById('ownerBio').value;
+            const skills = document.getElementById('ownerSkills').value;
+            
+            await fetch('/api/owner', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, bio, management_skills: skills })
+            });
+            alert('Profile Updated!');
+        }
+
+        async function loadBlogs() {
+            const res = await fetch('/api/blogs');
+            const blogs = await res.json();
+            const list = document.getElementById('adminBlogList');
+            list.innerHTML = blogs.map(b => `
+                <div style="padding:1rem; border:1px solid var(--glass-border); border-radius:10px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center;">
+                    <div style="display:flex; gap:10px; align-items:center;">
+                        <img src="${b.image_url}" style="width:40px; height:40px; object-fit:cover; border-radius:5px;">
+                        <span>${b.title}</span>
+                    </div>
+                    <button class="btn-outline pill" style="padding:0.3rem 1rem; font-size:0.8rem;" onclick="deleteBlog(${b.id})">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        async function addBlog() {
+            const title = document.getElementById('blogTitle').value;
+            const content = document.getElementById('blogContent').value;
+            const file = document.getElementById('blogFile').files[0];
+            
+            if (!title || !content || !file) return alert('Fill title, content and select a photo');
+
+            // Strategy: Upload photo to site-image logic first, or use a new route? 
+            // Better to use a dedicated blog upload route. 
+            // Wait, I didn't add a dedicated blog photo upload route. 
+            // I'll use /api/upload-site-image but it needs a unique key. 
+            // Actually, let's add a separate endpoint in server.js for blog photos or use /api/upload.
+            
+            // Let's modify addBlog to use a temporary upload first.
+            const formData = new FormData();
+            formData.append('photo', file);
+            
+            // Re-using site-image upload for simplicity with a timestamp key
+            const tempKey = 'blog-' + Date.now();
+            formData.append('image_key', tempKey);
+            
+            const upRes = await fetch('/api/upload-site-image', { method: 'POST', body: formData });
+            const upData = await upRes.json();
+            
+            await fetch('/api/blogs', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, content, image_url: upData.image_url })
+            });
+            document.getElementById('blogTitle').value = '';
+            document.getElementById('blogContent').value = '';
+            document.getElementById('blogFile').value = '';
+            loadBlogs();
+            alert('Blog Posted!');
+        }
+
+        async function deleteBlog(id) {
+            // Confirmation dialog removed to prevent browser blocking; delete executes immediately
+            await fetch(`/api/blogs/${id}`, { method: 'DELETE' });
+            loadBlogs();
+        }
+
+        async function initAdmin() {
+            await checkAuth();
+            loadOwner();
+            loadBlogs();
+        }
+        initAdmin();
+    </script>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            const icon = document.querySelector('.hamburger i');
+            nav.classList.toggle('active');
+            if (nav.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+                document.body.style.overflow = 'hidden';
+            } else {
+                icon.className = 'fas fa-bars';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

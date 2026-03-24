@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stayziya Property</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        .prop-hero { padding: 120px 5% 4rem; text-align: center; }
+        .prop-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; padding: 2rem 5%; }
+        .photo-card { border-radius: var(--radius-card); overflow: hidden; background: var(--bg-card); border: 1px solid var(--glass-border); }
+        .photo-card img { width: 100%; height: 250px; object-fit: cover; }
+        .photo-info { padding: 1rem; text-align: center; font-weight: 600; font-family: 'Poppins'; }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <div id="preloader" class="preloader">
+        <div class="preloader-ripple"></div>
+        <div class="preloader-content">
+            <div class="word-left">I</div>
+            <svg viewBox="0 0 512 512" class="heart-preloader" xmlns="http://www.w3.org/2000/svg">
+                <defs><clipPath id="heartClip"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c50.4-50.3 50.4-132.3 0-182.6c-50.4-50.3-132.4-50.3-182.7 0l-25.7 25.6-25.7-25.6c-50.3-50.3-132.3-50.3-182.7 0c-50.4 50.3-50.4 132.3 0 182.6z"/></clipPath></defs>
+                <g clip-path="url(#heartClip)"><rect class="liquid" x="0" y="550" width="512" height="550" fill="#e11d48" /></g>
+                <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c50.4-50.3 50.4-132.3 0-182.6c-50.4-50.3-132.4-50.3-182.7 0l-25.7 25.6-25.7-25.6c-50.3-50.3-132.3-50.3-182.7 0c-50.4 50.3-50.4 132.3 0 182.6z" fill="none" stroke="#cbd5e1" stroke-width="24"/>
+            </svg>
+            <div class="word-right">StayZiya</div>
+        </div>
+    </div>
+
+    <nav class="navbar zolo-nav">
+        <div class="logo"><span class="gold-text">Stay</span>Ziya</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/experience.html">Experience</a></li>
+            <li><a href="/neighborhood.html">Neighborhood</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/#rooms">Properties</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+        <a href="/#rooms" class="btn-primary pill">Enquire</a>
+    </nav>
+
+    <div class="prop-hero">
+        <h1 class="poppins" id="pTitle">Loading...</h1>
+        <p class="muted" id="pDesc" style="max-width: 800px; margin: 1rem auto; font-size:1.1rem;"></p>
+    </div>
+
+    <div class="prop-gallery" id="pGallery"></div>
+
+    <script>
+        async function init() {
+            const id = new URLSearchParams(window.location.search).get('id');
+            if(!id) return;
+            
+            const res = await fetch(`/api/properties/${id}`);
+            if(!res.ok) {
+                document.getElementById('pTitle').innerText = 'Property Not Found';
+                return;
+            }
+            
+            const data = await res.json();
+            document.getElementById('pTitle').innerText = data.title;
+            document.getElementById('pDesc').innerText = data.description || 'Welcome to this premium Stayziya property.';
+            
+            const gal = document.getElementById('pGallery');
+            if(data.photos && data.photos.length > 0) {
+                data.photos.forEach(p => {
+                    gal.innerHTML += `
+                    <div class="photo-card fade-in-up">
+                        <img src="${p.image_url}">
+                        <div class="photo-info">${p.room_type}</div>
+                    </div>`;
+                });
+            } else {
+                gal.innerHTML = `
+                <div style="text-align:center; width:100%; color:var(--text-muted); grid-column: 1 / -1; padding: 4rem;">
+                    <i class="fas fa-image" style="font-size:4rem; opacity:0.2;"></i>
+                    <p style="margin-top:1rem;">Photos coming soon...</p>
+                </div>`;
+            }
+        }
+        init();
+    </script>
+
+    <!-- Floating Reviews Widget (Branded) -->
+    <div class="floating-reviews zolo-reviews" style="left: 30px; right: auto; bottom: 30px;">
+        <div class="review-pill pill glass-pill" id="review-pill" style="border-color: rgba(255,255,255,0.6);">
+            <i class="fab fa-google" style="color: var(--text-main);"></i>
+            <span style="font-weight: 700; font-family: 'Poppins', sans-serif;"><span class="gold-text">Stay</span>Ziya · 4.9 <span class="gold-text">★</span></span>
+        </div>
+        <div class="review-panel glass-zolo" id="review-panel" style="left: 0; right: auto; text-align: left;">
+            <h4 class="poppins"><span class="gold-text">Stay</span>Ziya</h4>
+            <p style="font-size: 0.75rem; color: var(--gold); margin-top: -5px; margin-bottom: 15px; font-weight: 600;">Live bright stay bright</p>
+            <div class="review-card">
+                <p>"I had a great experience staying at Stay Ziya PG. The food quality is very good, fresh, and homely..."</p>
+                <span class="gold-text">- Kunal Das</span>
+            </div>
+            <div class="review-card">
+                <p>"One of the most comfortable and well-managed PGs. The food is simple, hygienic..."</p>
+                <span class="gold-text">- S Desappan</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StayZiya | Connectivity & Neighborhood</title>
+    <meta name="description" content="Explore the neighborhood around StayZiya PG in Bande Nallasandra, Jigani. IT parks, restaurants, metro, shopping and more within minutes.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <!-- Custom Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-ripple"></div>
+        <div class="preloader-content">
+            <div class="preloader-inner">
+                <div class="word-left">I</div>
+                <svg viewBox="0 0 512 512" class="heart-preloader" xmlns="http://www.w3.org/2000/svg">
+                    <defs><clipPath id="heartClip"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c50.4-50.3 50.4-132.3 0-182.6c-50.4-50.3-132.4-50.3-182.7 0l-25.7 25.6-25.7-25.6c-50.3-50.3-132.3-50.3-182.7 0c-50.4 50.3-50.4 132.3 0 182.6z"/></clipPath></defs>
+                    <g clip-path="url(#heartClip)"><rect class="liquid" x="0" y="550" width="512" height="550" fill="#e11d48" /></g>
+                    <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c50.4-50.3 50.4-132.3 0-182.6c-50.4-50.3-132.4-50.3-182.7 0l-25.7 25.6-25.7-25.6c-50.3-50.3-132.3-50.3-182.7 0c-50.4 50.3-50.4 132.3 0 182.6z" fill="none" stroke="#cbd5e1" stroke-width="24"/>
+                </svg>
+                <div class="word-right">StayZiya</div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar zolo-nav">
+        <div class="logo-wrapper">
+            <div class="z-icon"></div>
+            <div class="logo poppins" style="margin-left: 0;">
+                <span class="gold-text">Stay</span>Ziya
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/experience.html">Experience</a></li>
+            <li><a href="/neighborhood.html">Neighborhood</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/#rooms">Properties</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <a href="/#rooms" class="btn-primary pill">Enquire</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero zolo-hero" style="min-height: 60vh;">
+        <div class="hero-content">
+            <div class="badge">Location Advantage</div>
+            <h1 class="fade-in-up poppins">Connectivity & <span class="gold-text">Neighborhood</span></h1>
+            <p class="fade-in-up delay-1" style="font-size: 1.25rem;">Everything you need within reach. Tap a card to navigate on Google Maps.</p>
+        </div>
+    </section>
+
+    <!-- Neighborhood Grid -->
+    <section id="neighborhood" class="zolo-section" style="padding-top: 2rem;">
+        <div class="neighborhood-grid">
+            <!-- 1. Punjabi Aahar -->
+            <a href="https://maps.app.goo.gl/wHrGWNJFagFyTkNHA?g_st=atm" target="_blank" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title"><i class="fas fa-utensils gold-text" style="font-size:0.9em; margin-right:5px;"></i> Punjabi Aahar</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-walking"></i> 400 m • 5 min walk</p>
+            </div>
+            </a>
+
+            <!-- 2. HCL Technologies Ltd. -->
+            <a href="https://maps.app.goo.gl/qCDWW6qTgCUP4UbF9?g_st=atm" target="_blank" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal delay-1">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title"><i class="fas fa-building gold-text" style="font-size:0.9em; margin-right:5px;"></i> HCL Technologies</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-walking"></i> 800 m • 10 min walk</p>
+            </div>
+            </a>
+
+            <!-- 3. Cipla Ltd. -->
+            <a href="https://maps.app.goo.gl/vnp7ERzsuwVwrUFd8?g_st=atm" target="_blank" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal delay-2">
+                <img src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title"><i class="fas fa-flask gold-text" style="font-size:0.9em; margin-right:5px;"></i> Cipla Ltd.</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-walking"></i> 1.0 km • 12 min walk</p>
+            </div>
+            </a>
+
+            <!-- 4. IZee Business School -->
+            <a href="https://maps.app.goo.gl/dmbobkMjsYdxwcHP8?g_st=atm" target="_blank" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal">
+                <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=300&h=200" class="place-image" alt="IZee Business School">
+                <h3 class="poppins place-title"><i class="fas fa-graduation-cap gold-text" style="font-size:0.9em; margin-right:5px;"></i> IZee Business School</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-map-marker-alt"></i> 2.0 km • 5 min drive</p>
+            </div>
+            </a>
+
+            <!-- 5. Bristol Myers Squibb -->
+            <a href="https://maps.app.goo.gl/VoSbKibmuhX7tKEd9?g_st=atm" target="_blank" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal delay-1">
+                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title"><i class="fas fa-pills gold-text" style="font-size:0.9em; margin-right:5px;"></i> Bristol Myers Squibb</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-map-marker-alt"></i> 2.5 km • 6 min drive</p>
+            </div>
+            </a>
+
+            <!-- 6. Biocon Research Limited -->
+            <a href="https://maps.app.goo.gl/NeoEn51owMq9mFn68?g_st=atm" target="_blank" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal delay-2">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title"><i class="fas fa-microchip gold-text" style="font-size:0.9em; margin-right:5px;"></i> Biocon Research</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-map-marker-alt"></i> 1.5 km • 3 min drive</p>
+            </div>
+            </a>
+
+            <!-- 7. Bande Nallasandra Kere -->
+            <a href="https://maps.app.goo.gl/MQgATLk8YFpnNDP3A?g_st=atm" target="_blank" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title"><i class="fas fa-water gold-text" style="font-size:0.9em; margin-right:5px;"></i> Bande Nallasandra Kere</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-walking"></i> 200 m • 3 min walk</p>
+            </div>
+            </a>
+
+            <!-- 8. Raptor Sports Arena -->
+            <a href="https://maps.app.goo.gl/RFkQB9Td6x2Lsz7F8?g_st=atm" target="_blank" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal delay-1">
+                <img src="https://images.unsplash.com/photo-1461896836934-bd45ba7b5e09?auto=format&fit=crop&q=80&w=300&h=200" class="place-image" alt="Raptor Sports Arena">
+                <h3 class="poppins place-title"><i class="fas fa-volleyball-ball gold-text" style="font-size:0.9em; margin-right:5px;"></i> Raptor Sports Arena</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-map-marker-alt"></i> 1.0 km • 3 min drive</p>
+            </div>
+            </a>
+
+            <!-- 9. Brahma Shree Juice -->
+            <a href="https://maps.app.goo.gl/WpguCj8nQE6twcFY9?g_st=atm" target="_blank" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal delay-2">
+                <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title"><i class="fas fa-glass-cheers gold-text" style="font-size:0.9em; margin-right:5px;"></i> Brahma Shree Juice</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-walking"></i> 600 m • 7 min walk</p>
+            </div>
+            </a>
+
+            <!-- 10. ARTHA CAFÉ -->
+            <a href="https://maps.app.goo.gl/5ZdxpFdD4LbgG1YA7?g_st=atm" target="_blank" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal">
+                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title"><i class="fas fa-coffee gold-text" style="font-size:0.9em; margin-right:5px;"></i> ARTHA CAFÉ</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-walking"></i> 1.0 km • 12 min walk</p>
+            </div>
+            </a>
+
+            <!-- 11. HCL Technologies Tower 4 -->
+            <a href="https://maps.app.goo.gl/YAxAdMpXkhAgPQE19?g_st=atm" target="_blank" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal delay-1">
+                <img src="https://images.unsplash.com/photo-1416339442236-8ceb164046f8?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title"><i class="fas fa-building gold-text" style="font-size:0.9em; margin-right:5px;"></i> HCL Technologies Tower 4</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-walking"></i> 500 m • 6 min walk</p>
+            </div>
+            </a>
+
+            <!-- 12. Local Bakeries -->
+            <a href="#neighborhood" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal delay-2">
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title"><i class="fas fa-birthday-cake gold-text" style="font-size:0.9em; margin-right:5px;"></i> Local Bakeries</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-walking"></i> 200 m • 3 min walk</p>
+            </div>
+            </a>
+
+            <!-- 13. Tea Bro / Cafes -->
+            <a href="#neighborhood" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal">
+                <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title"><i class="fas fa-mug-hot gold-text" style="font-size:0.9em; margin-right:5px;"></i> Tea Bro / Cafes</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-walking"></i> 400 m • 5 min walk</p>
+            </div>
+            </a>
+
+            <!-- 14. RK Township Park -->
+            <a href="#neighborhood" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal delay-1">
+                <img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title"><i class="fas fa-tree gold-text" style="font-size:0.9em; margin-right:5px;"></i> RK Township Park</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-walking"></i> 800 m • 10 min walk</p>
+            </div>
+            </a>
+
+            <!-- 15. Unisex Salons -->
+            <a href="#neighborhood" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal delay-2">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title"><i class="fas fa-cut gold-text" style="font-size:0.9em; margin-right:5px;"></i> Unisex Salons</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-walking"></i> 500 m • 6 min walk</p>
+            </div>
+            </a>
+
+            <!-- 16. Bommasandra Metro Station -->
+            <a href="https://maps.app.goo.gl/bommasandra" target="_blank" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal">
+                <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&q=80&w=300&h=200" class="place-image" alt="Bommasandra Metro Station">
+                <h3 class="poppins place-title"><i class="fas fa-subway gold-text" style="font-size:0.9em; margin-right:5px;"></i> Bommasandra Metro Station</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-subway"></i> 5.0 km • 10 min drive</p>
+            </div>
+            </a>
+
+            <!-- 17. DMart -->
+            <a href="https://maps.app.goo.gl/dmart" target="_blank" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal delay-1">
+                <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title"><i class="fas fa-shopping-cart gold-text" style="font-size:0.9em; margin-right:5px;"></i> DMart</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-map-marker-alt"></i> 3.5 km • 8 min drive</p>
+            </div>
+            </a>
+
+            <!-- 18. Import Shop – APC Circle -->
+            <a href="https://maps.app.goo.gl/apc-circle" target="_blank" style="text-decoration:none;">
+            <div class="glass-zolo place-card reveal delay-2">
+                <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title"><i class="fas fa-store gold-text" style="font-size:0.9em; margin-right:5px;"></i> Import Shop – APC Circle</h3>
+                <p class="muted" style="font-size: 0.85rem; margin-top: 5px;"><i class="fas fa-map-marker-alt"></i> 2.0 km • 5 min drive</p>
+            </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Floating Reviews Widget (Branded) -->
+    <div class="floating-reviews zolo-reviews" style="left: 30px; right: auto; bottom: 30px;">
+        <div class="review-pill pill glass-pill" id="review-pill" style="border-color: rgba(255,255,255,0.6);">
+            <i class="fab fa-google" style="color: var(--text-main);"></i>
+            <span style="font-weight: 700; font-family: 'Poppins', sans-serif;"><span class="gold-text">Stay</span>Ziya · 4.9 <span class="gold-text">★</span></span>
+        </div>
+        <div class="review-panel glass-zolo" id="review-panel" style="left: 0; right: auto; text-align: left;">
+            <h4 class="poppins"><span class="gold-text">Stay</span>Ziya</h4>
+            <p style="font-size: 0.75rem; color: var(--gold); margin-top: -5px; margin-bottom: 15px; font-weight: 600;">Live bright stay bright</p>
+            <div class="review-card">
+                <p>"I had a great experience staying at StayZiya PG. The food quality is very good, fresh, and homely..."</p>
+                <span class="gold-text">- Kunal Das</span>
+            </div>
+            <div class="review-card">
+                <p>"One of the most comfortable and well-managed PGs. The food is simple, hygienic..."</p>
+                <span class="gold-text">- S Desappan</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Contact Actions -->
+    <div class="floating-contact-actions">
+        <a href="tel:+918971393908" class="contact-fab call-fab glass-fab" style="text-decoration:none;">
+            <i class="fas fa-phone-alt"></i>
+            <span>Call us</span>
+        </a>
+        <a href="https://wa.me/918971393908" target="_blank" class="contact-fab whatsapp-fab glass-fab" style="text-decoration:none;">
+            <i class="fab fa-whatsapp"></i>
+            <span>Chat w/ us</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="zolo-footer">
+        <div class="logo-wrapper" style="justify-content: center; margin-bottom: 20px;">
+            <div class="z-icon"></div>
+            <div class="logo poppins">
+                <span class="gold-text">Stay</span>Ziya
+            </div>
+        </div>
+        <div class="social-links" style="justify-content: center; margin-bottom: 20px;">
+            <a href="https://www.instagram.com/stayziya/" target="_blank"><i class="fab fa-instagram" style="font-size: 1.5rem;"></i></a>
+            <a href="https://wa.me/918971393908" target="_blank"><i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i></a>
+        </div>
+        <div class="tagline" style="margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-weight: 600;">Live Bright . Stay Bright</div>
+        <p class="muted" style="margin-top: 1rem;">&copy; 2026 StayZiya. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            const icon = document.querySelector('.hamburger i');
+            nav.classList.toggle('active');
+            if (nav.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+                document.body.style.overflow = 'hidden';
+            } else {
+                icon.className = 'fas fa-bars';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

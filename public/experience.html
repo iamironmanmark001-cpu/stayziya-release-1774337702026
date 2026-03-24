@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stayziya | Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        .split-section { display: flex; align-items: center; gap: 4rem; padding: 6rem 5%; max-width: 1400px; margin: 0 auto; }
+        .split-section.reverse { flex-direction: row-reverse; }
+        .split-text { flex: 1; }
+        .split-img { flex: 1; border-radius: var(--radius-card); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .split-img img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 400px; transition: transform 0.8s ease; }
+        .split-img:hover img { transform: scale(1.05); }
+        .step-label { color: var(--gold); font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem; display: block; font-family: 'Poppins'; }
+        
+        .feature-list { list-style: none; margin-top: 2rem; }
+        .feature-list li { margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; font-weight: 500; font-family: 'Inter'; color: var(--text-main); }
+        .feature-list i { color: var(--gold); background: rgba(251, 191, 36, 0.1); padding: 8px; border-radius: 50%; font-size: 0.9rem; }
+        
+        @media (max-width: 900px) {
+            .split-section, .split-section.reverse { flex-direction: column; gap: 3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <!-- Custom Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="preloader-ripple"></div>
+        <div class="preloader-content">
+            <div class="word-left">I</div>
+            <svg viewBox="0 0 512 512" class="heart-preloader" xmlns="http://www.w3.org/2000/svg">
+                <defs><clipPath id="heartClip"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c50.4-50.3 50.4-132.3 0-182.6c-50.4-50.3-132.4-50.3-182.7 0l-25.7 25.6-25.7-25.6c-50.3-50.3-132.3-50.3-182.7 0c-50.4 50.3-50.4 132.3 0 182.6z"/></clipPath></defs>
+                <g clip-path="url(#heartClip)"><rect class="liquid" x="0" y="550" width="512" height="550" fill="#e11d48" /></g>
+                <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c50.4-50.3 50.4-132.3 0-182.6c-50.4-50.3-132.4-50.3-182.7 0l-25.7 25.6-25.7-25.6c-50.3-50.3-132.3-50.3-182.7 0c-50.4 50.3-50.4 132.3 0 182.6z" fill="none" stroke="#cbd5e1" stroke-width="24"/>
+            </svg>
+            <div class="word-right">StayZiya</div>
+        </div>
+    </div>
+
+    <nav class="navbar zolo-nav">
+        <div class="logo-wrapper">
+            <div class="z-icon"></div>
+            <div class="logo poppins" style="margin-left: 0;">
+                <span class="gold-text">Stay</span>Ziya
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/experience.html">Experience</a></li>
+            <li><a href="/neighborhood.html">Neighborhood</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/#rooms">Properties</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <a href="/#rooms" class="btn-primary pill">Enquire</a>
+    </nav>
+
+    <div style="padding-top: 120px;">
+        <!-- Step 04 / Meals -->
+        <section class="split-section reverse reveal delay-1">
+            <div class="split-text">
+                <span class="step-label">Nourishment</span>
+                <h2 class="poppins" style="font-size: 2.8rem; margin-bottom: 1rem; color: var(--text-main);">Daily Homestyle Meals</h2>
+                <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.8;">Prepared fresh every day inside our spotless, hygienic kitchens. Balanced menus that bring the true comfort of traditional flavors directly to your everyday routine.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-carrot"></i> Fresh vegetarian & non-vegetarian</li>
+                    <li><i class="fas fa-sync"></i> Weekly rotating customized menus</li>
+                    <li><i class="fas fa-shield-alt"></i> Food hygiene & safety certified</li>
+                </ul>
+            </div>
+            <div class="split-img">
+                <img src="/uploads/experience-meals.jpg" alt="Homestyle Meals">
+            </div>
+        </section>
+
+        <!-- Living Not Residing -->
+        <section class="split-section reveal">
+            <div class="split-text">
+                <h2 class="poppins" style="font-size: 3rem; margin-bottom: 1.5rem;"><em style="font-family: 'Playfair Display', serif; font-weight:normal; color:var(--gold);">Living</em>, Not Just Residing</h2>
+                <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem;">At Stayziya, life blossoms through togetherness, laughter, and shared experiences. More than just a place to live, it's a thriving community where every day brings new friendships, heartfelt celebrations, and lasting memories.</p>
+                <p style="font-weight: 600; font-size: 1.2rem;"><i class="fas fa-users" style="color:var(--gold); margin-right: 10px;"></i> 100+ residents growing, thriving, and celebrating life together.</p>
+            </div>
+            <div class="split-img">
+                <img src="/uploads/experience-community.jpg" alt="Community Collage">
+            </div>
+        </section>
+
+        <!-- Gym Section -->
+        <section class="split-section reverse reveal">
+            <div class="split-text">
+                <span class="step-label">Fitness</span>
+                <h2 class="poppins" style="font-size: 2.8rem; margin-bottom: 1rem; color: var(--text-main);">State-of-the-Art Gym</h2>
+                <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.8;">Stay at the top of your game with access to our fully equipped in-house gym. Whether you're into strength training, cardio, or flexibility, we've got everything you need to crush your fitness goals.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-dumbbell"></i> Modern equipment &amp; free weights</li>
+                    <li><i class="fas fa-clock"></i> Open early morning to late night</li>
+                    <li><i class="fas fa-user-shield"></i> Safe, ventilated &amp; hygienic space</li>
+                </ul>
+            </div>
+            <div class="split-img">
+                <img src="/uploads/experience-gym.jpg" alt="Gym Facility">
+            </div>
+        </section>
+
+        <!-- Volleyball Section -->
+        <section class="split-section reveal">
+            <div class="split-text">
+                <span class="step-label">Recreation</span>
+                <h2 class="poppins" style="font-size: 2.8rem; margin-bottom: 1rem; color: var(--text-main);">Volleyball Court</h2>
+                <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.8;">Unwind and connect with fellow residents on our dedicated volleyball court. It's not just a sport — it's how friendships are forged and communities are built at Stayziya.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-volleyball-ball"></i> Dedicated full-size court</li>
+                    <li><i class="fas fa-users"></i> Regular community tournaments</li>
+                    <li><i class="fas fa-sun"></i> Outdoor &amp; well-lit for evening play</li>
+                </ul>
+            </div>
+            <div class="split-img">
+                <img src="/uploads/experience-volleyball.jpg" alt="Volleyball Court">
+            </div>
+        </section>
+
+        <!-- Open Theater Section -->
+        <section class="split-section reverse reveal" style="padding-bottom: 100px;">
+            <div class="split-text">
+                <span class="step-label">Entertainment</span>
+                <h2 class="poppins" style="font-size: 2.8rem; margin-bottom: 1rem; color: var(--text-main);">Open Air Theater</h2>
+                <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.8;">Enjoy movie nights under the stars in our exclusive open-air theater. From blockbusters to community screenings, it's the perfect way to unwind after a long day — together.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-film"></i> Weekly movie nights &amp; screenings</li>
+                    <li><i class="fas fa-couch"></i> Comfortable open-air seating</li>
+                    <li><i class="fas fa-star"></i> Community-voted film selections</li>
+                </ul>
+            </div>
+            <div class="split-img">
+                <img src="/uploads/experience-theater.jpg" alt="Open Air Theater">
+            </div>
+        </section>
+    </div>
+
+    <!-- Floating Reviews Widget (Branded) -->
+    <div class="floating-reviews zolo-reviews" style="left: 30px; right: auto; bottom: 30px;">
+        <div class="review-pill pill glass-pill" id="review-pill" style="border-color: rgba(255,255,255,0.6);">
+            <i class="fab fa-google" style="color: var(--text-main);"></i>
+            <span style="font-weight: 700; font-family: 'Poppins', sans-serif;"><span class="gold-text">Stay</span>Ziya · 4.9 <span class="gold-text">★</span></span>
+        </div>
+        <div class="review-panel glass-zolo" id="review-panel" style="left: 0; right: auto; text-align: left;">
+            <h4 class="poppins"><span class="gold-text">Stay</span>Ziya</h4>
+            <p style="font-size: 0.75rem; color: var(--gold); margin-top: -5px; margin-bottom: 15px; font-weight: 600;">Live bright stay bright</p>
+            <div class="review-card">
+                <p>"I had a great experience staying at StayZiya PG. The food quality is very good, fresh, and homely..."</p>
+                <span class="gold-text">- Kunal Das</span>
+            </div>
+            <div class="review-card">
+                <p>"One of the most comfortable and well-managed PGs. The food is simple, hygienic..."</p>
+                <span class="gold-text">- S Desappan</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            const icon = document.querySelector('.hamburger i');
+            nav.classList.toggle('active');
+            if (nav.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+                document.body.style.overflow = 'hidden';
+            } else {
+                icon.className = 'fas fa-bars';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

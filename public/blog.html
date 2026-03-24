@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stayziya | Blog & Owner</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        .owner-section { padding: 120px 5% 4rem; display: flex; align-items: center; gap: 4rem; max-width: 1200px; margin: 0 auto; }
+        .owner-img { flex: 1; max-width: 400px; position: relative; }
+        .owner-img img { width: 100%; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .owner-text { flex: 1.5; }
+        .skills-tag { display: inline-block; background: rgba(251, 191, 36, 0.1); color: var(--gold); padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; margin-right: 0.5rem; margin-top: 0.5rem; border: 1px solid rgba(251, 191, 36, 0.2); }
+        
+        .blog-feed { padding: 4rem 5%; max-width: 1100px; margin: 0 auto; }
+        .blog-card { background: var(--bg-card); border-radius: var(--radius-card); border: 1px solid var(--glass-border); padding: 2.5rem; margin-bottom: 3rem; display: flex; gap: 2rem; align-items: flex-start; }
+        .blog-card img { width: 300px; height: 200px; object-fit: cover; border-radius: var(--radius-sm); }
+        .blog-info { flex: 1; }
+        .blog-date { color: var(--gold); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+        
+        @media (max-width: 900px) {
+            .owner-section, .blog-card { flex-direction: column; text-align: center; }
+            .owner-img { margin: 0 auto; }
+            .blog-card img { width: 100%; height: 250px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-dot" data-cursor-dot></div>
+    <div class="cursor-outline" data-cursor-outline></div>
+
+    <div id="preloader" class="preloader">
+        <div class="preloader-ripple"></div>
+        <div class="preloader-content">
+            <div class="word-left">I</div>
+            <svg viewBox="0 0 512 512" class="heart-preloader" xmlns="http://www.w3.org/2000/svg">
+                <defs><clipPath id="heartClip"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c50.4-50.3 50.4-132.3 0-182.6c-50.4-50.3-132.4-50.3-182.7 0l-25.7 25.6-25.7-25.6c-50.3-50.3-132.3-50.3-182.7 0c-50.4 50.3-50.4 132.3 0 182.6z"/></clipPath></defs>
+                <g clip-path="url(#heartClip)"><rect class="liquid" x="0" y="550" width="512" height="550" fill="#e11d48" /></g>
+                <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c50.4-50.3 50.4-132.3 0-182.6c-50.4-50.3-132.4-50.3-182.7 0l-25.7 25.6-25.7-25.6c-50.3-50.3-132.3-50.3-182.7 0c-50.4 50.3-50.4 132.3 0 182.6z" fill="none" stroke="#cbd5e1" stroke-width="24"/>
+            </svg>
+            <div class="word-right">StayZiya</div>
+        </div>
+    </div>
+
+    <nav class="navbar zolo-nav">
+        <div class="logo-wrapper">
+            <div class="z-icon"></div>
+            <div class="logo poppins" style="margin-left: 0;">
+                <span class="gold-text">Stay</span>Ziya
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/experience.html">Experience</a></li>
+            <li><a href="/neighborhood.html">Neighborhood</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/#rooms">Properties</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <a href="/#rooms" class="btn-primary pill">Enquire</a>
+    </nav>
+
+    <!-- Owner Profile Section -->
+    <section class="owner-section reveal">
+        <div class="owner-img">
+            <img id="ownerPhoto" src="/uploads/owner-placeholder.jpg" alt="Vashnavi">
+        </div>
+        <div class="owner-text">
+            <span class="step-label">Meet the Visionary</span>
+            <h1 class="poppins" id="ownerName" style="font-size: 3.5rem; margin-bottom: 1rem;">Vashnavi</h1>
+            <p id="ownerBio" style="font-size: 1.25rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem;"></p>
+            <div id="ownerSkills"></div>
+        </div>
+    </section>
+
+    <!-- Blog Feed -->
+    <section class="blog-feed">
+        <div class="section-title">
+            <h2 class="poppins"><span class="gold-text">Stay</span>Ziya <span class="gold-text">Stories</span></h2>
+            <p>Insights, updates, and community highlights.</p>
+        </div>
+        <div id="blogContainer"></div>
+    </section>
+
+    <!-- Floating Reviews Widget (Branded) -->
+    <div class="floating-reviews zolo-reviews" style="left: 30px; right: auto; bottom: 30px;">
+        <div class="review-pill pill glass-pill" id="review-pill" style="border-color: rgba(255,255,255,0.6);">
+            <i class="fab fa-google" style="color: var(--text-main);"></i>
+            <span style="font-weight: 700; font-family: 'Poppins', sans-serif;"><span class="gold-text">Stay</span>Ziya · 4.9 <span class="gold-text">★</span></span>
+        </div>
+        <div class="review-panel glass-zolo" id="review-panel" style="left: 0; right: auto; text-align: left;">
+            <h4 class="poppins"><span class="gold-text">Stay</span>Ziya</h4>
+            <p style="font-size: 0.75rem; color: var(--gold); margin-top: -5px; margin-bottom: 15px; font-weight: 600;">Live bright stay bright</p>
+            <div class="review-card">
+                <p>"I had a great experience staying at StayZiya PG. The food quality is very good, fresh, and homely..."</p>
+                <span class="gold-text">- Kunal Das</span>
+            </div>
+            <div class="review-card">
+                <p>"One of the most comfortable and well-managed PGs. The food is simple, hygienic..."</p>
+                <span class="gold-text">- S Desappan</span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="zolo-footer">
+        <div class="logo poppins"><span class="gold-text">Stay</span>Ziya</div>
+        <p class="muted">&copy; 2026 StayZiya. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        async function loadContent() {
+            // Load Owner
+            const ownerRes = await fetch('/api/owner');
+            const owner = await ownerRes.json();
+            document.getElementById('ownerName').textContent = owner.name;
+            document.getElementById('ownerBio').textContent = owner.bio;
+            document.getElementById('ownerPhoto').src = owner.image_url;
+            
+            const skills = (owner.management_skills || '').split(',').map(s => s.trim());
+            document.getElementById('ownerSkills').innerHTML = skills.map(s => `<span class="skills-tag">${s}</span>`).join('');
+
+            // Load Blogs
+            const blogRes = await fetch('/api/blogs');
+            const blogs = await blogRes.json();
+            const container = document.getElementById('blogContainer');
+            
+            if (blogs.length === 0) {
+                container.innerHTML = '<p class="muted" style="text-align:center;">No stories yet. Stay tuned!</p>';
+            } else {
+                container.innerHTML = blogs.map(b => `
+                    <div class="blog-card reveal active" style="padding: 0; display: flex; align-items: stretch; background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.06); overflow: hidden; margin-bottom: 4rem; border: none; flex-wrap: wrap; min-height: 400px;">
+                        
+                        <!-- Left Image Banner -->
+                        <div style="flex: 1; min-width: 300px; position: relative; overflow: hidden; background: #f8fafc;">
+                            ${b.image_url ? `<img src="${b.image_url}" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; border-radius: 0;">` : ''}
+                            <div style="position: absolute; bottom: 20px; left: 20px; background: rgba(255,255,255,0.9); padding: 5px 15px; border-radius: 20px; font-weight: 700; color: var(--gold); font-size: 0.85rem;">
+                                ${b.date}
+                            </div>
+                        </div>
+
+                        <!-- Right Content -->
+                        <div style="flex: 1.5; min-width: 350px; padding: 4rem 3rem; display: flex; flex-direction: column; justify-content: center;">
+                            <h2 class="poppins" style="font-size: 2.2rem; color: #333; font-weight: 700; margin-bottom: 1.5rem; line-height: 1.3;">
+                                ${b.title}
+                            </h2>
+                            <div style="color: #555; font-size: 1rem; line-height: 1.8; white-space: pre-wrap; margin-bottom: auto;">
+                                ${b.content}
+                            </div>
+                            <div style="margin-top: 2rem;">
+                                <a href="#" class="btn-outline pill" style="border-color: var(--gold); color: var(--gold); padding: 0.5rem 1.5rem; display: inline-block;">Read More <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                `).join('');
+            }
+        }
+        loadContent();
+    </script>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            const icon = document.querySelector('.hamburger i');
+            nav.classList.toggle('active');
+            if (nav.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+                document.body.style.overflow = 'hidden';
+            } else {
+                icon.className = 'fas fa-bars';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

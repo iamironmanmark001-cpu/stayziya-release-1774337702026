@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neighborhood Sample - Stayziya</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        body { padding: 40px 0; background: url('/uploads/bg-1.jpg') fixed center; background-size: cover; }
+        .neighborhood-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Reduced size */
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .place-card {
+            position: relative;
+            padding: 1.2rem !important; /* Reduced padding from standard glass-zolo */
+            border-radius: 12px;
+        }
+        .serial-no {
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            background: var(--gold);
+            color: #000;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4);
+            z-index: 10;
+        }
+        .place-image {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .place-title {
+            font-size: 1.1rem !important;
+            margin-bottom: 6px !important;
+            line-height: 1.2;
+        }
+        .place-desc {
+            font-size: 0.85rem !important;
+            line-height: 1.4;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="bubble-container">
+        <!-- Bubbles for background effect -->
+        <div class="bubble" style="width: 100px; height: 100px; left: 10%; background: linear-gradient(135deg, rgba(251,191,36,0.8), rgba(255,100,0,0)); --duration: 15s; --drift: 50px;"></div>
+        <div class="bubble" style="width: 150px; height: 150px; left: 80%; background: linear-gradient(135deg, rgba(225,29,72,0.8), rgba(255,100,0,0)); --duration: 20s; --drift: -100px;"></div>
+    </div>
+
+    <section class="zolo-section" style="padding-top: 10px;">
+        <div class="section-title">
+            <h2 class="poppins">Neighborhood <span class="gold-text">Sample Gallery V2</span></h2>
+            <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto; color: var(--text-muted); background: rgba(255,255,255,0.8); padding: 15px; border-radius: 10px; margin-bottom: 40px;">Cards are now smaller and include photos. I've added your requested ultra-local spots at the bottom (15-20). Reply with the Serial Numbers you want.</p>
+        </div>
+
+        <div class="neighborhood-grid">
+            <!-- IT & Corporate -->
+            <div class="glass-zolo place-card">
+                <div class="serial-no">1</div>
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">Biocon Park & Cipla</h3>
+                <p class="place-desc">Major biotech and pharmaceutical hub located just a short distance away in the Jigani Industrial Area.</p>
+            </div>
+            
+            <div class="glass-zolo place-card">
+                <div class="serial-no">2</div>
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">HCL Technologies</h3>
+                <p class="place-desc">Prominent IT services and consulting campus providing massive employment opportunities locally.</p>
+            </div>
+
+            <div class="glass-zolo place-card">
+                <div class="serial-no">3</div>
+                <img src="https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">Otis Elevator Company</h3>
+                <p class="place-desc">Major manufacturing and corporate facility located right in the Jigani corporate corridor.</p>
+            </div>
+
+            <div class="glass-zolo place-card">
+                <div class="serial-no">4</div>
+                <img src="https://images.unsplash.com/photo-1416339442236-8ceb164046f8?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">Electronic City IT Hub</h3>
+                <p class="place-desc">Easy access to Infosys, Tech Mahindra, and Wipro campuses via a quick connect road.</p>
+            </div>
+
+            <div class="glass-zolo place-card">
+                <div class="serial-no">5</div>
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">APC by Schneider Electric</h3>
+                <p class="place-desc">Key multinational facility situated nearby, anchoring the Jigani industrial landscape.</p>
+            </div>
+
+            <!-- Healthcare -->
+            <div class="glass-zolo place-card">
+                <div class="serial-no">6</div>
+                <img src="https://images.unsplash.com/photo-1587559070757-f72a388edbba?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">Vijayashree Hospitals</h3>
+                <p class="place-desc">Trusted local multi-specialty hospital for all immediate and emergency medical needs.</p>
+            </div>
+
+            <div class="glass-zolo place-card">
+                <div class="serial-no">7</div>
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">Narayana Health City</h3>
+                <p class="place-desc">World-class medical center and super-specialty hospital located a short drive away in Bommasandra.</p>
+            </div>
+
+            <div class="glass-zolo place-card">
+                <div class="serial-no">8</div>
+                <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">Fortis Hospital</h3>
+                <p class="place-desc">Renowned premium healthcare facility accessible via Bannerghatta Road for specialized treatments.</p>
+            </div>
+
+            <!-- Dining & Retail -->
+            <div class="glass-zolo place-card">
+                <div class="serial-no">9</div>
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">Shiv Sagar Restaurant</h3>
+                <p class="place-desc">Highly rated local dining offering delicious multi-cuisine vegetarian options.</p>
+            </div>
+
+            <div class="glass-zolo place-card">
+                <div class="serial-no">10</div>
+                <img src="https://images.unsplash.com/photo-1626804475297-41607ea0ba4eb?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">Thalassery Restaurant</h3>
+                <p class="place-desc">Trending spot for authentic Kerala and South Indian non-veg delicacies.</p>
+            </div>
+
+            <div class="glass-zolo place-card">
+                <div class="serial-no">11</div>
+                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">Udupi Grand Eateries</h3>
+                <p class="place-desc">Classic Udupi style quick-service restaurants nearby for daily breakfast and snacks.</p>
+            </div>
+
+            <div class="glass-zolo place-card">
+                <div class="serial-no">12</div>
+                <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">D-Mart Supermarket</h3>
+                <p class="place-desc">Massive local hypermarket for all your daily shopping, groceries, and essential needs.</p>
+            </div>
+            
+            <div class="glass-zolo place-card">
+                <div class="serial-no">13</div>
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">Domino’s Pizza</h3>
+                <p class="place-desc">Close proximity to international food chains covering quick delivery and late-night cravings.</p>
+            </div>
+
+            <div class="glass-zolo place-card">
+                <div class="serial-no">14</div>
+                <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">Jigani APC Circle</h3>
+                <p class="place-desc">The central bustling hub connecting the residential and corporate spheres of the area.</p>
+            </div>
+
+            <!-- NEW HYPER-LOCAL SPOTS (15-20) -->
+            <div class="glass-zolo place-card">
+                <div class="serial-no">15</div>
+                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">Sri Balaji Bakery</h3>
+                <p class="place-desc">Highly accessible local bakery serving fresh breads, sweets, and puffs under 1km away.</p>
+            </div>
+
+            <div class="glass-zolo place-card">
+                <div class="serial-no">16</div>
+                <img src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">Tea Bro Tea Shop</h3>
+                <p class="place-desc">Popular local spot for a quick tea break and casual hangouts right in the Jigani neighborhood.</p>
+            </div>
+
+            <div class="glass-zolo place-card">
+                <div class="serial-no">17</div>
+                <img src="https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">RK Township Park</h3>
+                <p class="place-desc">Lush, peaceful green space perfect for morning jogs, evening walks, and fresh air within 1km.</p>
+            </div>
+
+            <div class="glass-zolo place-card">
+                <div class="serial-no">18</div>
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">Natural Greens Salon</h3>
+                <p class="place-desc">Professional and highly-rated unisex salon nearby to keep you looking sharp and groomed.</p>
+            </div>
+
+            <div class="glass-zolo place-card">
+                <div class="serial-no">19</div>
+                <img src="https://images.unsplash.com/photo-1596765792078-d4212eeeb277?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">Bommasandra Metro</h3>
+                <p class="place-desc">Crucial upcoming Yellow Line Metro Station directly connecting locals to major tech corridors.</p>
+            </div>
+
+            <div class="glass-zolo place-card">
+                <div class="serial-no">20</div>
+                <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&q=80&w=300&h=200" class="place-image">
+                <h3 class="poppins place-title">APC Circle Bus Stop</h3>
+                <p class="place-desc">Immediate connectivity to Kempegowda Bus Station (Majestic), Banashankari, and K R Market.</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

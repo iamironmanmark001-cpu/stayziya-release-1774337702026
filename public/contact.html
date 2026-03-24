@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Stayziya</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --stayziya-yellow: #fbbf24;
+            /* Using home page variables for consistency in light theme */
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* ── Hero Section (Light) ── */
+        .contact-hero {
+            padding: 160px 5% 60px;
+            text-align: center;
+            background: transparent;
+            position: relative;
+        }
+
+        .contact-hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .contact-hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cta-whatsapp-btn {
+            background: var(--stayziya-yellow);
+            color: #000;
+            padding: 1.1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-whatsapp-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(251, 191, 36, 0.4);
+        }
+
+        /* ── Main Grid ── */
+        .contact-main-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
+            padding: 20px 5% 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-form-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            padding: 45px;
+            border-radius: 30px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+        }
+
+        .contact-form-card h2 {
+            margin-bottom: 35px;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-main);
+            font-size: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 16px;
+            background: #fff;
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            color: var(--text-main);
+            font-family: inherit;
+            transition: 0.3s;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--stayziya-yellow);
+            outline: none;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.1);
+        }
+
+        .map-section {
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            height: 100%;
+            min-height: 400px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        /* ── Footer-Style Info Section ── */
+        .footer-info-section {
+            background: #fff;
+            padding: 100px 5% 50px;
+            border-top: 1px solid var(--glass-border);
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            color: var(--text-main);
+            margin-bottom: 30px;
+            font-size: 1.3rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .footer-col p, .footer-col a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 18px;
+            font-size: 1rem;
+            transition: 0.3s;
+            line-height: 1.5;
+        }
+
+        .footer-col a:hover {
+            color: var(--stayziya-yellow);
+        }
+
+
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            color: var(--stayziya-yellow);
+            font-size: 1.2rem;
+            margin-top: 3px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .contact-item span {
+            display: block;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--stayziya-yellow);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 1024px) {
+            .contact-main-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-hero h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar zolo-nav">
+        <div class="logo-wrapper">
+            <div class="z-icon"></div>
+            <div class="logo poppins" style="margin-left: 0;">
+                <span class="gold-text">Stay</span>Ziya
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="neighborhood.html">Neighborhood</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#rooms">Properties</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+        <a href="index.html#rooms" class="btn-primary pill">Enquire</a>
+    </nav>
+
+    <header class="contact-hero">
+        <div class="reveal">
+            <div class="tagline">Live Bright . Stay Bright</div>
+            <h1 class="poppins">Contact <span class="gold-text">Stay</span>Ziya</h1>
+            <p>Ready to level up your lifestyle? Join the Stayziya community today. Our team is standing by to help you find your perfect sanctuary.</p>
+            <a href="https://wa.me/918971393908" class="cta-whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp Now
+            </a>
+        </div>
+    </header>
+
+    <main class="contact-main-grid reveal">
+        <section class="contact-form-card">
+            <h2>Reserve Your Spot</h2>
+            <form id="whatsappForm">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="userName" placeholder="e.g. Rahul Sharma" required>
+                </div>
+                <div class="form-group form-row">
+                    <div>
+                        <label>Contact Number</label>
+                        <input type="tel" id="userPhone" placeholder="+91 89XXX XXXXX" required>
+                    </div>
+                    <div>
+                        <label>Preferred Living</label>
+                        <select id="userInterest">
+                            <option>Stayziya Main (Unisex)</option>
+                            <option>Stayziya Imperial Ladies</option>
+                            <option>Stayziya Imperial Gents</option>
+                            <option>Group / Custom Inquiry</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Requirement Details</label>
+                    <textarea id="userMessage" rows="5" placeholder="Share your move-in date or any specific needs..."></textarea>
+                </div>
+                <button type="submit" class="cta-whatsapp-btn" style="width: 100%; justify-content: center; box-sizing: border-box;">
+                    Submit Inquiry <i class="fas fa-paper-plane" style="font-size: 0.9rem; margin-left: 8px;"></i>
+                </button>
+            </form>
+        </section>
+
+        <section class="map-section">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15560.892!2d77.65!3d12.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDQ4JzAwLjAiTiA3N8KwMzknMDQuOCJF!5e0!3m2!1sen!2sin!4v1650000000000!5m2!1sen!2sin" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </section>
+    </main>
+
+    <footer class="footer-info-section">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo-wrapper" style="margin-bottom: 20px;">
+            <div class="z-icon"></div>
+            <div class="logo poppins" style="margin-left: 0;">
+                <span class="gold-text">Stay</span>Ziya
+            </div>
+        </div>
+                <p>Establishing a new gold standard in premium PG living. Comfort, luxury, and community — all in one place.</p>
+                <div class="social-links" style="align-items: center;">
+                    <a href="https://www.instagram.com/stayziya/" target="_blank"><i class="fab fa-instagram" style="font-size: 1.5rem;"></i></a>
+                    <a href="https://wa.me/918971393908" target="_blank"><i class="fab fa-whatsapp" style="font-size: 1.5rem;"></i></a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Stayziya,+Bande+Nalla+Sandra,+Jigani,+Bangalore" target="_blank" style="width: auto; padding: 0 20px; border-radius: 30px; font-weight: 700; gap: 8px;">
+                        Get Directions <i class="fas fa-directions" style="font-size: 1.2rem;"></i>
+                    </a>
+                </div>
+                <div class="tagline" style="margin-top: 20px;">Live Bright . Stay Bright</div>
+            </div>
+
+
+
+            <div class="footer-col">
+                <h3>Contact Details</h3>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <span>Helpline</span>
+                        <p>+91 89713 93908</p>
+                        <p>+91 91102 33814</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <div>
+                        <span>Email Support</span>
+                        <p>stayziya@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <div>
+                        <span>Our Presence</span>
+                        <p>Bande Nalla Sandra, Jigani, Bangalore</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div style="text-align: center; padding-top: 60px; border-top: 1px solid var(--glass-border); margin-top: 60px; font-size: 0.85rem; color: var(--text-muted); letter-spacing: 1px;">
+            &copy; 2026 StayZiya. Crafted for Excellence.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('whatsappForm').onsubmit = function(e) {
+            e.preventDefault();
+            const name = document.getElementById('userName').value;
+            const phone = document.getElementById('userPhone').value;
+            const interest = document.getElementById('userInterest').value;
+            const message = document.getElementById('userMessage').value;
+
+            const text = `Hi Stayziya! 👋\n\n*Inquiry Received*\n*Name:* ${name}\n*Phone:* ${phone}\n*Property:* ${interest}\n*Message:* ${message}`;
+            const encodedText = encodeURIComponent(text);
+            window.open(`https://wa.me/918971393908?text=${encodedText}`, '_blank');
+        };
+
+        // Scroll Reveal logic (simple trigger)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+    </script>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            const icon = document.querySelector('.hamburger i');
+            nav.classList.toggle('active');
+            if (nav.classList.contains('active')) {
+                icon.className = 'fas fa-times';
+                document.body.style.overflow = 'hidden';
+            } else {
+                icon.className = 'fas fa-bars';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>
